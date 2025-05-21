@@ -84,6 +84,17 @@ flutter:
         - asset: assets\fonts\Montserrat-Italic-VariableFont_wght.ttf
         - asset: assets\fonts\Montserrat-VariableFont_wght.ttf
           weight: 700
+    - family: Roboto
+      fonts:
+        - asset: assets\fonts\Roboto-Italic-VariableFont_wdth,wght.ttf
+        - asset: assets\fonts\Roboto-VariableFont_wdth,wght.ttf
+          weight: 900
+    - family: NanumGothic
+      fonts:
+        - asset: assets\fonts\NanumGothic-Regular.ttf
+        - asset: assets\fonts\NanumGothic-ExtraBold.ttf
+        - asset: assets\fonts\NanumGothic-Bold.ttf
+          weight: 900
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
