@@ -328,7 +328,12 @@ class _LatihanState extends State<Latihan> {
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFA8E063).withOpacity(0.4),
+                      color: const Color.fromARGB(
+                        255,
+                        121,
+                        122,
+                        120,
+                      ).withOpacity(0.4),
                       blurRadius: 8,
                       offset: const Offset(0, 4),
                     ),
