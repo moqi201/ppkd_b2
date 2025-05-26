@@ -26,7 +26,7 @@ class _Meet6State extends State<Meet6> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: 20),
                 Center(
                   child: Column(
                     children: [
@@ -64,6 +64,8 @@ class _Meet6State extends State<Meet6> {
                 SizedBox(height: 12),
                 TextField(
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
                     hintText: 'Enter your email address',
                     hintStyle: TextStyle(
                       color: Colors.grey,
@@ -99,6 +101,8 @@ class _Meet6State extends State<Meet6> {
                 SizedBox(height: 12),
                 TextField(
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
                     hintText: 'Enter your phone number',
                     hintStyle: TextStyle(
                       color: Colors.grey,
@@ -135,6 +139,10 @@ class _Meet6State extends State<Meet6> {
                 TextField(
                   obscureText: _obscureText,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.100),
+                    // Blur effect
+                    // Use a Stack to wrap the TextField with BackdropFilter
                     hintText: 'Enter your password',
                     hintStyle: TextStyle(
                       color: Colors.grey,
