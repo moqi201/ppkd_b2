@@ -65,7 +65,9 @@ class _Meet6State extends State<Meet6> {
                 TextField(
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Colors.white.withOpacity(
+                      0.10,
+                    ), // Use opacity for a subtle blur effect,
                     hintText: 'Enter your email address',
                     hintStyle: TextStyle(
                       color: Colors.grey,
@@ -102,7 +104,7 @@ class _Meet6State extends State<Meet6> {
                 TextField(
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Colors.white.withOpacity(0.10),
                     hintText: 'Enter your phone number',
                     hintStyle: TextStyle(
                       color: Colors.grey,
@@ -140,7 +142,9 @@ class _Meet6State extends State<Meet6> {
                   obscureText: _obscureText,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white.withOpacity(0.100),
+                    fillColor: Colors.white.withOpacity(
+                      0.10,
+                    ), // Use opacity for a subtle blur effect
                     // Blur effectF
                     // Use a Stack to wrap the TextField with BackdropFilter
                     hintText: 'Enter your password',
