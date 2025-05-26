@@ -141,7 +141,7 @@ class _Meet6State extends State<Meet6> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.100),
-                    // Blur effect
+                    // Blur effectF
                     // Use a Stack to wrap the TextField with BackdropFilter
                     hintText: 'Enter your password',
                     hintStyle: TextStyle(
