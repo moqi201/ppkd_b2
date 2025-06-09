@@ -1,13 +1,13 @@
 class ModelHewan {
-  int id;
+  int? id;
   String nama;
   String jenis;
   int umur;
   double berat;
-  String foto;
+  String foto; // path gambar
 
   ModelHewan({
-    required this.id,
+    this.id,
     required this.nama,
     required this.jenis,
     required this.umur,
@@ -16,20 +16,24 @@ class ModelHewan {
   });
 
   factory ModelHewan.fromMap(Map<String, dynamic> map) {
-    double beratFromMap(dynamic berat) {
-      if (berat == null) return 0.0;
-      if (berat is int) return berat.toDouble();
-      if (berat is double) return berat;
-      return 0.0;
-    }
-
     return ModelHewan(
-      id: map['id'] ?? 0,
-      nama: map['nama'] ?? '',
-      jenis: map['jenis'] ?? '',
-      umur: map['umur'] ?? 0,
-      berat: beratFromMap(map['berat']),
+      id: map['id'],
+      nama: map['nama'],
+      jenis: map['jenis'],
+      umur: map['umur'],
+      berat: map['berat']?.toDouble() ?? 0.0,
       foto: map['foto'] ?? '',
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'nama': nama,
+      'jenis': jenis,
+      'umur': umur,
+      'berat': berat,
+      'foto': foto,
+    };
   }
 }
