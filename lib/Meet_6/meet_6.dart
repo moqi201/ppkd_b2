@@ -1,8 +1,14 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ppkd_b2/Meet_6/latihan.dart';
+import 'package:ppkd_b2/helper/preference.dart';
+import 'package:ppkd_b2/meet_12/meet_12a.dart';
+import 'package:ppkd_b2/meet_12/meet_12c.dart';
+import 'package:ppkd_b2/meet_4/tugas_empat.dart';
+import 'package:ppkd_b2/meet_5/meet_5a.dart';
 
 class Meet6 extends StatefulWidget {
   const Meet6({super.key});
+  static const String id = "/meet_6";
 
   @override
   State<Meet6> createState() => _Meet6State();
@@ -186,7 +192,15 @@ class _Meet6State extends State<Meet6> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //navigator push Replacement di gunakan untuk berpindah halaman
+                      // tetapi tidak bisa kembali ke halaman sebelumnya
+                      // ini Navigator pushReplacement
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => MeetLima()),
+                      ); // navigator push di gunakan untuk berpindah halaman
+                    },
                     child: Text(
                       'Forgot Password?',
                       style: TextStyle(
@@ -201,7 +215,17 @@ class _Meet6State extends State<Meet6> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // navigator push di gunakan untuk berpindah halaman / mendorong halaman baru  ke atas stack (halaman sebelumnya tetap ada di belakang)
+                      // ini Navigator push
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => TugasEmpat()),
+                      // ); // ini Navigator push
+
+                      PreferenceHandler.saveLogin(true);
+                      Navigator.pushNamed(context, MeetDuaBelasC.id);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xff283FB1),
                       padding: EdgeInsets.symmetric(vertical: 24),
@@ -251,7 +275,10 @@ class _Meet6State extends State<Meet6> {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // navigator push di gunakan untuk berpindah halaman
+                      Navigator.pushNamed(context, "/meet_2");
+                    },
                     style: OutlinedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 16),
                       backgroundColor:
@@ -290,13 +317,31 @@ class _Meet6State extends State<Meet6> {
                       text: 'Don\'t have an account? ',
                       style: TextStyle(color: Colors.grey),
                       children: [
-                        TextSpan(
-                          text: 'Sign Up',
-                          style: TextStyle(
-                            color: Color(0xff283FB1),
-                            fontWeight: FontWeight.bold,
+                        WidgetSpan(
+                          child: TextButton(
+                            onPressed: () {
+                              // navigator push di gunakan untuk berpindah halaman
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Meet11A(),
+                                ),
+                              );
+                            },
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              minimumSize: Size(0, 0),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: Color(0xff283FB1),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () {},
                         ),
                       ],
                     ),

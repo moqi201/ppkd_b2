@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permission untuk akses internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="ppkd_b2"
         android:name="${applicationName}"

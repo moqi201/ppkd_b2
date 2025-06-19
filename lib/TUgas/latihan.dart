@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'theme_provider.dart';
 
 class Tugas7 extends StatefulWidget {
@@ -162,7 +163,8 @@ class _Tugas7State extends State<Tugas7> {
                 decoration: InputDecoration(
                   hintText: 'Pilih kategori',
                   filled: true,
-                  fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                  fillColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 12,
@@ -257,7 +259,7 @@ class _Tugas7State extends State<Tugas7> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
-        backgroundColor: isDark ? Colors.black : const Color(0xff6A0DAD),
+        backgroundColor: isDark ? Colors.black : const Color(0xff85193C),
       ),
       drawer: Drawer(
         backgroundColor: isDark ? Colors.black : Colors.white,
@@ -266,7 +268,7 @@ class _Tugas7State extends State<Tugas7> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: isDark ? Colors.grey[900] : const Color(0xff6A0DAD),
+                color: isDark ? Colors.grey[900] : const Color(0xff85193C),
               ),
               child: Center(
                 child: Text(

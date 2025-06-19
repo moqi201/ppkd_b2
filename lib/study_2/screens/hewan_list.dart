@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_b2/study_2/database/db_helper3.dart';
 import 'package:ppkd_b2/study_2/model/model_hewan.dart';
 import 'package:ppkd_b2/study_2/screens/hewan_detail.dart';
+import 'package:ppkd_b2/study_2/screens/hewan_update.dart';
 // import 'hewan_detail_screen.dart';
 
 class HewanListScreen extends StatefulWidget {
@@ -30,10 +31,15 @@ class _HewanListScreenState extends State<HewanListScreen> {
     });
   }
 
-  // Future<void> hapusData(int id) async {
-  //   await dbHelper.deleteHewan(id);
-  //   await muatData();
-  // }
+  Future<void> hapusData(int id) async {
+    await dbHelper.deleteHewan(id);
+    await muatData();
+  }
+
+  Future<void> updateData(int id) async {
+    await dbHelper.updateHewan(id);
+    await muatData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,13 +98,13 @@ class _HewanListScreenState extends State<HewanListScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                // IconButton(
-                                //   icon: const Icon(
-                                //     Icons.delete,
-                                //     color: Colors.red,
-                                //   ),
-                                //   onPressed: () => hapusData(hewan.id),
-                                // ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () => hapusData(hewan.id),
+                                ),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.push(
@@ -112,6 +118,21 @@ class _HewanListScreenState extends State<HewanListScreen> {
                                   },
                                   child: Icon(
                                     Icons.info,
+                                    color: Colors.teal,
+                                    size: 20,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => HewanUpdate(),
+                                      ),
+                                    );
+                                  },
+                                  child: Icon(
+                                    Icons.update,
                                     color: Colors.teal,
                                     size: 20,
                                   ),

@@ -12,6 +12,11 @@ class TugasEmpat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //menggunakan leading untuk menampilkan tombol kembali, dan Navigation.pop untuk kembali ke halaman sebelumnya
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context), // Kembali ke halaman sebelumnya
+        ),
         title: Text(
           "Formulir & Daftar Produk",
           style: TextStyle(

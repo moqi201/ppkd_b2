@@ -47,6 +47,15 @@ class DbHelper3 {
       whereArgs: [id],
     );
   }
+  Future<void> updateHewan(int id) async {
+    final db = await DbHelper3.db();
+    await db.update(
+      'hewan',
+      {'id': id},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
   
 
 }
