@@ -1,8 +1,11 @@
 // lib/tugas_14/view/character_list_screen.dart
+// ... (imports lainnya tetap sama)
 import 'package:flutter/material.dart';
 import 'package:ppkd_b2/tugas_14/model/character_model.dart';
 import 'package:ppkd_b2/tugas_14/view/filtered_list.dart';
 import 'package:ppkd_b2/tugas_14/view/staff/staff.dart';
+import 'package:ppkd_b2/tugas_14/view/student/student.dart';
+// Import file ini
 
 class CharacterListScreen extends StatefulWidget {
   const CharacterListScreen({super.key});
@@ -45,14 +48,18 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
 
     return GestureDetector(
       onTap: () {
+        // Sekarang, ketika mengklik kartu rumah, langsung buka daftar karakter
+        // dan filter (jika ada) akan dikelola di dalam FilteredCharacterListView.
+        // Anda bisa memutuskan apakah ingin langsung menerapkan filter House atau tidak.
+        // Untuk contoh ini, kita tidak akan menerapkan filter House awal secara langsung,
+        // melainkan membiarkan pengguna memilih dari dialog filter.
         Navigator.push(
           context,
           MaterialPageRoute(
             builder:
                 (context) => FilteredCharacterListView(
                   getEnumValue: _getEnumValue,
-                  initialHouseFilter:
-                      house, // *** Teruskan house yang diklik di sini ***
+                  // initialHouseFilter: house, // Ini dihapus atau di-comment out
                 ),
           ),
         );
@@ -111,7 +118,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
           "Hogwarts Characters",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: Color(0xff27548A),
+        backgroundColor: Colors.deepPurple,
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
       ),
@@ -120,22 +127,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: const Color(0xff27548A), // Fallback color
-                image: DecorationImage(
-                  image: const AssetImage(
-                    'assets/images/heripoter.jpg',
-                  ), // Path to your image
-                  fit:
-                      BoxFit.cover, // Ensure the image covers the entire header
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(
-                      0.4,
-                    ), // Add a dark overlay for better text readability
-                    BlendMode.darken,
-                  ),
-                ),
-              ),
+              decoration: BoxDecoration(color: Colors.deepPurple.shade700),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -157,7 +149,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.shield, color: Color(0xff27548A)),
+              leading: Icon(Icons.shield, color: Colors.deepPurple.shade700),
               title: const Text(
                 'Hogwarts Staff',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -173,7 +165,23 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.group, color: Color(0xff27548A)),
+              leading: Icon(Icons.school, color: Colors.deepPurple.shade700),
+              title: const Text(
+                'Hogwarts Students',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HogwartsStudentScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.group, color: Colors.deepPurple.shade700),
               title: const Text(
                 'All Characters (Multi-Filter)',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -186,9 +194,6 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                     builder:
                         (context) => FilteredCharacterListView(
                           getEnumValue: _getEnumValue,
-                          // Tidak ada filter awal untuk "All Characters"
-                          initialHouseFilter:
-                              null, // Atau House.EMPTY jika Anda ingin menunjukkan "tidak ada filter house"
                         ),
                   ),
                 );
@@ -230,7 +235,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xff27548A),
+                color: Colors.deepPurple,
               ),
             ),
             const SizedBox(height: 20),
@@ -243,13 +248,13 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                   _buildHouseCard(
                     context,
                     house: House.GRYFFINDOR,
-                    imagePath: 'assets/images/pindor.png',
+                    imagePath: 'assets/images/gripindor.jpg',
                     color: _getHouseColor(House.GRYFFINDOR),
                   ),
                   _buildHouseCard(
                     context,
                     house: House.SLYTHERIN,
-                    imagePath: 'assets/images/terin.png',
+                    imagePath: 'assets/images/sliterin.jpg',
                     color: _getHouseColor(House.SLYTHERIN),
                   ),
                   _buildHouseCard(
@@ -261,7 +266,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                   _buildHouseCard(
                     context,
                     house: House.RAVENCLAW,
-                    imagePath: 'assets/images/rev.png',
+                    imagePath: 'assets/images/rv.jpg',
                     color: _getHouseColor(House.RAVENCLAW),
                   ),
                 ],
@@ -273,5 +278,3 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
     );
   }
 }
-
-// Dummy screens (tetap seperti sebelumnya, pastikan file ini ada)
